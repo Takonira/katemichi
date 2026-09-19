@@ -7,7 +7,7 @@
     <style>
         /* 全体の基本設定 */
         html {
-            scroll-behavior: smooth; /* ページ内リンクをスムーズにスクロールさせる */
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
@@ -19,11 +19,11 @@
         }
 
         /* --------------------------------------
-           ファーストビュー（画像2枚目の再現部分）
+           ファーストビュー
         -------------------------------------- */
         .hero {
             position: relative;
-            width: 100vh; /* 画面の高さいっぱいに表示 */
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -48,24 +48,30 @@
         .hero-logo {
             max-width: 80%;
             height: auto;
-            /* 👇 もしロゴ画像を少し小さくしたい場合はここの数値を調整してください */
-            width: 400px; 
+            width: 800px; 
         }
-        .scroll-prompt {
+        
+        /* 🌟 変更: Playストアへのリンクボタンのデザイン */
+        .store-button {
             position: absolute;
-            bottom: 30px;
-            font-size: 12px;
-            color: #888;
-            animation: bounce 2s infinite;
+            bottom: 40px;
+            background-color: #01875f; /* Playストア風の緑色 */
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+        .store-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
         }
 
         /* --------------------------------------
-           コンテンツ部分（画像1枚目の再現部分）
+           コンテンツ部分
         -------------------------------------- */
         .container {
             max-width: 800px;
@@ -115,43 +121,50 @@
             font-size: 14px;
             margin-bottom: 30px;
         }
-        /* 見出し（各章の題名）のデザイン */
         h2 {
             font-size: 20px;
             font-weight: bold;
-            color: #e91e63; /* 画像に合わせたピンク/赤系の色 */
+            color: #e91e63;
             margin-top: 50px;
             margin-bottom: 15px;
         }
-        /* 第1章のリストデザイン */
         .custom-list {
-            list-style-type: square; /* 四角い黒ポチ */
+            list-style-type: square;
             padding-left: 20px;
         }
         .custom-list li {
             margin-bottom: 15px;
         }
+        
+        /* 🌟 追加: フォーム埋め込みエリアのデザイン */
+        .form-container {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
-    <!-- ファーストビュー（画面いっぱいの表示） -->
+    <!-- ファーストビュー -->
     <div class="hero">
         <div class="hero-top-left">カテミチ プライバシーポリシー</div>
         <div class="hero-title">
             カテミチ<br>プライバシーポリシー
         </div>
         
-        <!-- ロゴ画像（srcのファイル名をアップロードした画像名に変更してください） -->
+        <!-- 🌟 変更: ロゴ画像のファイル名を katemichi_web.png に修正 -->
         <img src="katemichi_web.png" alt="カテミチ ロゴ" class="hero-logo">
 
-        <div class="scroll-prompt">▼ スクロールして読む ▼</div>
+        <!-- 🌟 変更: Play Store へのリンクボタン -->
+        <!-- 下記の href="URL" の部分を、実際のGoogle PlayストアのURLに書き換えてください -->
+        <a href="https://play.google.com/store/apps/details?id=YOUR_APP_PACKAGE_NAME" target="_blank" class="store-button">インストールはコチラ</a>
     </div>
 
     <!-- コンテンツエリア -->
     <div class="container">
         
-        <!-- 目次（各章へのリンク） -->
+        <!-- 目次 -->
         <div class="toc">
             <p>目次</p>
             <ul>
@@ -166,9 +179,9 @@
 
         <!-- 本文 -->
         <div class="main-title">KATEMICHI プライバシーポリシー</div>
-        <div class="date">制定日: 2026年6月21日</div>
+        <div class="date">制定日: 2026年9月21日</div>
 
-        <p>本プライバシーポリシーは、gak wpy（以下、「開発者」）が提供するスマートフォン向けアプリケーション「KATEMICHI」（以下、「本アプリ」）における、ユーザーの情報の取り扱いについて定めるものです。</p>
+        <p>本プライバシーポリシーは、gak wpy（以下、「開発者」）が提供するスマートフォン向けアプリケーション「カテミチ」（以下、「本アプリ」）における、ユーザーの情報の取り扱いについて定めるものです。</p>
 
         <!-- 第1章 -->
         <h2 id="section1">1. 取得する情報と利用目的</h2>
@@ -198,6 +211,11 @@
         <!-- 第6章 -->
         <h2 id="section6">6. お問い合わせ窓口</h2>
         <p>本アプリのプライバシーポリシーに関するお問い合わせや、アプリに関するご質問等は、以下の問い合わせフォームまでお願いいたします。</p>
+        
+        <!-- 🌟 追加: Googleフォームの埋め込み -->
+        <div class="form-container">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSehmw0JZUuJD-qMwF1HP25NW68G1NFU7Su8Fkl47HdONCBaKw/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+        </div>
         
     </div>
 
